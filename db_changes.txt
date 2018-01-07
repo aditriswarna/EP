@@ -1,0 +1,100 @@
+ALTER TABLE project_participation ADD COLUMN equity_type ENUM('Principal_Protection', 'Interest_Earning') AFTER investment_type;
+
+CREATE TABLE `user_requests` (                        
+`user_request_id` INT(11) NOT NULL AUTO_INCREMENT,  
+`user_ref_id` INT(11) NOT NULL,                     
+`project_ref_id` INT(11) NOT NULL,                  
+`approved_by` INT(11) DEFAULT NULL,                 
+`is_approved` SMALLINT(1) NOT NULL DEFAULT '0',     
+`approved_on` DATETIME DEFAULT NULL,                
+PRIMARY KEY (`user_request_id`)                     
+) ENGINE=INNODB DEFAULT CHARSET=latin1  
+
+
+ALTER TABLE project_media ADD COLUMN document_type ENUM('projectImgage','projectDocument','projectVideos');
+
+
+-------------------------
+
+Release 2 changes
+
+CREATE TABLE admin_assigned_user_types(
+	admin_assigned_user_types_id INT(11) NOT NULL AUTO_INCREMENT,
+	user_ref_id INT(11) NOT NULL,
+	user_type_ref_id INT(11) NOT NULL,
+	PRIMARY KEY (`admin_assigned_user_types_id`),
+	KEY `FK_admin_assigned_user_types_user` (`user_ref_id`),
+	KEY `FK_admin_assigned_user_types_user_type` (`user_type_ref_id`),
+	CONSTRAINT `FK_admin_assigned_user_types_user` FOREIGN KEY (`user_ref_id`) REFERENCES `user` (`id`),
+	CONSTRAINT `FK_admin_assigned_user_types_user_type` FOREIGN KEY (`user_type_ref_id`) REFERENCES `user_type` (`user_type_id`)
+);
+
+
+-----------------------
+02-03-2017
+
+CREATE TABLE `subscription` (                             
+                `subscription_id` INT(11) NOT NULL AUTO_INCREMENT,      
+                `email` VARCHAR(250) DEFAULT NULL,                      
+                `ip_address` VARCHAR(400) DEFAULT NULL,                 
+                `added_on` DATETIME DEFAULT NULL,                       
+                PRIMARY KEY (`subscription_id`)                         
+              ) ENGINE=MYISAM DEFAULT CHARSET=latin1  
+
+ALTER TABLE project_participation MODIFY `investment_type` VARCHAR(10) DEFAULT NULL;   
+ALTER TABLE projects MODIFY modified_by INT(11) DEFAULT 0;                                                                      
+ALTER TABLE projects MODIFY modified_date DATETIME DEFAULT NULL;  
+
+CREATE TABLE `session` (                
+           `id` CHAR(40) NOT NULL,               
+           `expire` INT(11) DEFAULT NULL,        
+           `data` BLOB,                          
+           PRIMARY KEY (`id`)                    
+         )
+		 
+ -----------------------
+17-04-2017
+ 
+DROP VIEW google_projectlist;
+
+ 
+DELIMITER $$
+
+CREATE VIEW `google_projectlist` AS (
+SELECT
+  (SELECT
+     COUNT(0)
+   FROM `project_likes`
+   WHERE (`project_likes`.`project_ref_id` = `p`.`project_id`)) AS `likes`,
+  `p`.`project_id`              AS `project_id`,
+  `p`.`user_ref_id`             AS `user_ref_id`,
+  `p`.`project_category_ref_id` AS `category`,
+  `p`.`project_type_ref_id`     AS `project_type_ref_id`,
+  `p`.`project_title`           AS `project_title`,
+  `p`.`location`                AS `location`,
+  (TO_DAYS(`p`.`project_end_date`) - TO_DAYS(NOW())) AS `left_days`,
+  `p`.`estimated_project_cost`  AS `estimated_project_cost`,
+  `p`.`longitude`               AS `lng`,
+  `p`.`project_status`          AS `project_status`,
+  `p`.`latitude`                AS `lat`,
+  `u`.`media_agency_ref_id`     AS `media_agency_ref_id`,
+  `ut`.`user_type`              AS `user_type`,
+  `ut`.`user_type_id`           AS `user_type_id`,
+  `pc`.`category_name`          AS `category_name`,
+  `pm`.`document_name`          AS `document_name`,
+  `pm`.`document_type`          AS `document_type`,
+  `p`.`project_end_date`        AS `project_end_date`
+FROM ((((`projects` `p`
+      JOIN `project_category` `pc`
+        ON ((`pc`.`project_category_id` = `p`.`project_category_ref_id`)))
+     JOIN `user` `u`
+       ON ((`u`.`id` = `p`.`user_ref_id`)))
+    JOIN `user_type` `ut`
+      ON ((`ut`.`user_type_id` = `u`.`user_type_ref_id`)))
+   LEFT JOIN `project_media` `pm`
+     ON ((`pm`.`project_ref_id` = `p`.`project_id`)))
+WHERE (`p`.`project_status` IN(1,4))
+GROUP BY `p`.`project_id`,`pm`.`project_ref_id`
+ORDER BY `p`.`project_end_date` DESC)$$
+
+DELIMITER ;

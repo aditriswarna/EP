@@ -1,0 +1,359 @@
+/* #page-header it just included for the examples */
+body{margin:0; font-family: 'Titillium Web', sans-serif;}
+#page-header {
+    display: block;
+    float: left;
+    max-width: 800px; }
+#page-header .bh-sl-title {
+    color: #797874;
+    }
+@media (min-width: 1024px) {
+    #page-header .bh-sl-title {
+        font-size: 30px; } }
+
+/* Infowindow Roboto font override */
+.gm-style div, .gm-style span, .gm-style label, .gm-style a {
+     }
+
+.bh-sl-error {
+    clear: both;
+    color: #ae2118;
+    float: left;
+    font-weight: bold;
+    padding: 10px 0;    
+    width: 100%; }
+
+/* Avoid image issues with Google Maps and CSS resets */
+.bh-sl-map-container img {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    max-height: none !important;
+    max-width: none !important; }
+
+.bh-sl-container {
+    box-sizing: border-box;
+    float: left;
+    font-family: 'Titillium Web', sans-serif;
+
+    width: 100%;
+    /* Avoid issues with Google Maps and CSS frameworks */ }
+.bh-sl-container > * {
+    box-sizing: content-box !important; }
+.bh-sl-container .bh-sl-form-container {
+    clear: left;
+    float: left;
+    margin-top: 65px;
+    width: 100%; box-shadow:0px 3px 4px 0px rgba(0, 0, 0, 0.2); -webkit-box-shadow:0px 3px 4px 0px rgba(0, 0, 0, 0.2); -moz-box-shadow:0px 3px 4px 0px rgba(0, 0, 0, 0.2); -o-box-shadow:0px 3px 4px 0px rgba(0, 0, 0, 0.2); position:relative; z-index:9; padding:12px 0 4px 0;}
+.bh-sl-container .form-input {
+    float: left;
+    margin-top: 0px;
+    width: 100%; }
+@media (min-width: 768px) {
+    .bh-sl-container .form-input {
+        width: 100%; } }
+.bh-sl-container .form-input label {
+    display: block;
+    font-weight: bold;
+    width: 100%; }
+@media (min-width: 768px) {
+    .bh-sl-container .form-input label {
+        display: inline-block;
+        width: auto; } }
+.bh-sl-container .form-input input, .bh-sl-container .form-input select {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 15px 0;
+    padding: 6px 12px;
+    width: 100%;
+    -webkit-border-radius: 4px; }
+@media (min-width: 768px) {
+    .bh-sl-container .form-input input, .bh-sl-container .form-input select {
+        width: 100%;
+        margin: 0 0px 0 0px; } }
+/*.bh-sl-container button {
+    background: #00447a;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    float: left;
+    font: bold 14px/1.4 Arial, Helvetica, sans-serif;
+    margin-top: 3px;
+    padding: 6px 12px;
+    white-space: nowrap;
+    -webkit-border-radius: 4px; }*/
+.bh-sl-container .bh-sl-loading {
+    background: url(../img/ajax-loader.gif) no-repeat;
+    float: left;
+    margin: 4px 0 0 10px;
+    height: 16px;
+    width: 16px; }
+.bh-sl-container .bh-sl-filters-container {
+    clear: both;
+    float: left;
+    width: 100%; }
+/*.bh-sl-container .bh-sl-filters-container .bh-sl-filters {
+    float: left;
+    list-style: none;
+    margin: 0 100px 0 0;
+    padding: 0; }*/
+.bh-sl-container .bh-sl-filters-container .bh-sl-filters li {
+    clear: left;
+    display: block;
+    float: left;
+
+    width: 100%; }
+.bh-sl-container .bh-sl-filters-container .bh-sl-filters li label {
+
+    vertical-align: text-bottom; }
+.bh-sl-container .bh-sl-filters-container .bh-sl-filters li input {
+    display: block;
+    float: left;
+    margin-right: 8px; }
+.bh-sl-container .bh-sl-filters-container .bh-sl-filters li select {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 12px;
+    -webkit-border-radius: 4px; }
+.bh-sl-container .bh-sl-map-container {
+    clear: left;
+    float: left;
+    position: relative;
+    width: 100%; }
+	
+	
+	/****************cnu**
+	
+	i.fa.fa-sm.fa-heart.prjlike.fl-let {    float: left;    margin-top: 3px;}
+ .nav-tabs.gmap-tabs > li.active > a:focus{    border: 0px solid #ddd;     border-radius: 0;}
+ .nav-tabs.gmap-tabs > li.active a, .nav-tabs.gmap-tabs > li.active > a:focus{ color:#fff;}
+ .nav-tabs.gmap-tabs > li.active a:hover {background: #11c0c6; color: #fff;}
+ .nav-tabs.gmap-tabs > li.active > a, .nav-tabs.gmap-tabs > li.active > a:focus{    background: #11c0c6;  text-decoration:none; border-radius:0px;}
+	.loc-address {    font-family: search;    margin-bottom: 5px;}
+	.row1 {    margin: 0 auto;    padding: 0 0;    width: 100%;    clear: both;     font-size: 14px;}
+	.col-30 {    margin: 0 auto;    padding: 0;    width: 30%;    float: left;}
+	.col-50 {    margin: 0 auto;    padding: 0;    width: 70%;    float: left;}
+	.bh-sl-container .bh-sl-loc-list .list-details {    float: left;    margin-left: 6px;    width: 100%;}
+	.mg-tpp {    margin-top: 5px;}
+	.list-data {    float: left;    width: 180px;}
+	span.time-iconss i {    color: #ffa500;}
+	.bh-sl-container .bh-sl-loc-list {    border-left: 4px solid #e3e3e3;}
+	.project-detail-pane {    float: left;}
+	.pop-tabs {    margin: 0 auto;    float: left;      padding-left: 10px;     padding-right: 0;}
+	.gmap-tabs {    border-bottom: 0px solid #ddd;}
+	.nav-tabs.gmap-tabs > li { border-bottom: rgba(204, 204, 204, 0) solid 3px;   padding: 0 11px;}
+	.nav-tabs.gmap-tabs > li > a:hover {    background: none;    text-decoration: none;}
+	.nav-tabs.gmap-tabs > li > a, .nav-tabs.gmap-tabs > li > a:hover {    border: 0px solid transparent;}
+	.nav-tabs.gmap-tabs > li {    padding: 0 5px;}
+	.nav-tabs.gmap-tabs > li a {       padding:4px 10px;}	
+	.nav-tabs.gmap-tabs > li a:hover { background:#f9f9f9; border-radius:0px;;}
+	.nav-tabs.gmap-tabs > li:first-child{ padding-left:0}
+	div#carousel-example-generic1 {    clear: both;}
+	.bh-sl-container .bh-sl-loc-list ul li {border-top: 1px solid #bfbfbf;}
+	.table-row-sidup{margin-right:0px;    margin-left:0px;}
+	.table-row-sidup .summary { margin-bottom: 10px; font-family: search}
+	.table-row-sidup .table thead tr th{font-family: search; background:#fff;border-color:#ebebeb;font-weight: bold;    vertical-align: middle;}
+	.table-row-sidup .table > tbody > tr > td{ background:#fff;}
+.pop-tabs .tab-content.mar-btm10 { height: 300px; overflow-y:scroll; background: #f1f1f1;    padding: 10px 6px !important;}
+.pop-tabs .tab-content.mar-btm10 .active{height:auto;}
+.project-detail-pane {    width: 100%;}
+.project-details{ padding-right:0px !important}
+.project-detail-address i{ color:#ffa500; font-size:14px;}
+.close-bt {    margin: 0 auto;    width: 100%;    height: auto;}
+.close-bt button.close{ background: none;} ****/
+
+
+
+
+
+@media (max-width: 1024px) {
+	.project-details {
+    overflow-y: scroll;}
+     }	
+@media (min-width: 1024px) {
+    /*.bh-sl-container .bh-sl-map-container {
+        margin-bottom: 60px; }*/ }
+/*.bh-sl-container .bh-sl-map-container a {
+    color: #005293;
+    text-decoration: none; }*/
+.bh-sl-container .bh-sl-map-container a:active, .bh-sl-container .bh-sl-map-container a:focus, .bh-sl-container .bh-sl-map-container a:hover {
+    text-decoration: underline; }
+.bh-sl-container .bh-sl-loc-list {
+    font-size: 13px;
+    height: 530px;
+    overflow-x: auto;
+    width: 100%; }
+@media (min-width: 768px) {
+    .bh-sl-container .bh-sl-loc-list {
+        width: 27%;overflow-x: hidden; z-index:2; position: relative; background:#FFF;} }
+.bh-sl-container .bh-sl-loc-list ul {
+    display: block;
+    clear: left;
+    float: left;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+.bh-sl-container .bh-sl-loc-list ul li {
+    border-bottom: 2px solid #d84b48;
+    /* Adding this to prevent moving li elements when adding the list-focus class*/
+    box-sizing: border-box;
+    clear: left;
+    cursor: pointer;
+    display: block;
+    float: left;
+    width: 100%; }
+.bh-sl-container .bh-sl-loc-list .list-label {
+    background: #00192d;
+    border-radius: 15px;
+    color: #fff;
+    display: block;
+    float: left;
+    font-weight: bold;
+    margin: 10px 0 0 15px;
+    padding: 4px 7px;
+    text-align: center;
+    width: auto;
+    min-width: 13px; }
+.bh-sl-container .bh-sl-loc-list .list-details {
+    float: left;
+    margin-left: 6px;
+    width: 100%; }
+.bh-sl-container .bh-sl-loc-list .list-details .list-content {
+    padding: 10px 0; overflow:hidden; }
+.bh-sl-container .bh-sl-loc-list .list-details .loc-dist {
+    color: #8e8e8e;
+    font-weight: bold;
+    font-style: italic; }
+.bh-sl-container .bh-sl-loc-list .list-focus {
+    background: rgba(10, 212, 218, 0.10);
+	box-shadow: inset 0px 0px 6px 1px rgb(47, 41, 41);
+-webkit-box-shadow: inset 0px 0px 6px 1px rgb(47, 41, 41);
+-moz-box-shadow: inset 0px 0px 6px 1px rgb(47, 41, 41); 
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s; }
+.bh-sl-container .bh-sl-loc-list .bh-sl-close-directions-container {
+    height: 20px;
+    position: relative;
+    width: 100%; }
+.bh-sl-container .bh-sl-loc-list .bh-sl-close-directions-container .bh-sl-close-icon {
+    right: 6px;
+    top: 0; }
+.bh-sl-container .bh-sl-loc-list .bh-sl-directions-panel {
+    margin: 0 2%;
+    /* Avoid issues with table-layout */ }
+.bh-sl-container .bh-sl-loc-list .bh-sl-directions-panel table {
+    table-layout: auto;
+    width: 100%; }
+.bh-sl-container .bh-sl-loc-list .bh-sl-directions-panel table, .bh-sl-container .bh-sl-loc-list .bh-sl-directions-panel td {
+    vertical-align: middle;
+    border-collapse: separate; }
+.bh-sl-container .bh-sl-loc-list .bh-sl-directions-panel td {
+    padding: 1px; }
+.bh-sl-container .bh-sl-loc-list .bh-sl-directions-panel .adp-placemark {
+    margin: 10px 0;
+    border: 1px solid #c0c0c0; }
+.bh-sl-container .bh-sl-loc-list .bh-sl-directions-panel .adp-marker {
+    padding: 3px; }
+.bh-sl-container .bh-sl-loc-list .bh-sl-noresults-title {
+    font-weight: bold;
+    margin: 15px; }
+.bh-sl-container .bh-sl-loc-list .bh-sl-noresults-desc {  margin: 0 15px; }
+.bh-sl-container .loc-name {
+    /* Picked up by both list and infowindows */
+   font-family: 'Titillium Web', sans-serif;
+    margin-bottom: 2px; line-height:18px;
+	text-transform:capitalize; margin-top:-3px;}
+.bh-sl-container .bh-sl-map {
+    float: left;
+    height: 530px;
+    width: 100%; }
+@media (min-width: 768px) {
+    .bh-sl-container .bh-sl-map {
+        width: 73%; } }
+.bh-sl-container .bh-sl-pagination-container {
+    clear: both; }
+.bh-sl-container .bh-sl-pagination-container ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 0;
+    text-align: center; }
+.bh-sl-container .bh-sl-pagination-container ol li {
+    color: #005293;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px; }
+.bh-sl-container .bh-sl-pagination-container ol .bh-sl-current {
+    color: #555;
+    cursor: auto;
+    text-decoration: none; }
+
+/* Modal window */
+.bh-sl-overlay {
+    background: url(../img/overlay-bg.png) repeat;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000; }
+.bh-sl-overlay .bh-sl-modal-window {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #656565;
+    position: absolute;
+    left: 50%;
+    margin-left: -460px;
+    /* width divided by 2 */
+    margin-top: 60px;
+    height: 620px;
+    width: 920px;
+    z-index: 10010; }
+.bh-sl-overlay .bh-sl-modal-window .bh-sl-map-container {
+    margin-top: 50px;
+    /* increase map container margin */ }
+.bh-sl-overlay .bh-sl-modal-window .bh-sl-modal-content {
+    float: left;
+    padding: 0 1%;
+    /* there's already a margin on the top of the map-container div */
+    width: 98%; }
+.bh-sl-overlay .bh-sl-modal-window .bh-sl-close-icon {
+    right: 22px;
+    top: 13px; }
+
+.bh-sl-close-icon {
+    cursor: pointer;
+    height: 24px;
+    position: absolute;
+    width: 24px; }
+.bh-sl-close-icon:after, .bh-sl-close-icon:before {
+    background: #ccc;
+    content: '';
+    display: block;
+    height: 24px;
+    margin: -3px 0 0 -1px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 3px;
+    top: 3px;
+    width: 3px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg); }
+.bh-sl-close-icon:hover:after, .bh-sl-close-icon:hover:before {
+    background: #b3b3b3; }
+.bh-sl-close-icon:before {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
+
+/*# sourceMappingURL=storelocator.css.map */
+
+
+/*New CSS by Bodhtree - 16-june*/

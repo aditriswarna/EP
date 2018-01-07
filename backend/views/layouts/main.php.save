@@ -1,0 +1,148 @@
+<?php
+
+/* @var $this \yii\web\View */
+/* @var $content string */
+
+use backend\assets\AppAsset;
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\widgets\Breadcrumbs;
+use common\widgets\Alert;
+
+
+$asset = backend\assets\AppAsset::register($this);
+$baseUrl = $asset->baseUrl;
+
+?>
+<?php
+ $imagePath = (PROD == 1)?'/frontend/web':'/equippp/frontend/web'; 
+/* $bundle = new \DotsUnited\BundleFu\Bundle();
+$bundle
+    // Set the document root
+    ->setDocRoot(Yii::getAlias('@webroot').'/themes/metronic')
+
+    // Set the css cache path (relative to the document root)
+    ->setCssCachePath('css/cache')
+
+    // Set the javascript cache path (relative to the document root)
+    ->setJsCachePath('js/cache'); */
+?>
+<?php // $bundle->start(); ?>  
+    <!-- <link rel="stylesheet" type="text/css" href="assets/global/plugins/font-awesome/css/font-awesome.min.css" media="screen" />    
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap/css/bootstrap.min.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/uniform/css/uniform.default.css" media="screen" />   
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" media="screen" />    
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" media="screen" />    
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" media="screen" />    
+    <link rel="stylesheet" type="text/css" href="assets/global/css/plugins.min.css" media="screen" /> 
+    <link rel="stylesheet" type="text/css" href="assets/layouts/layout/css/custom.min.css" media="screen" />    
+
+    
+    <script type="text/javascript" src="assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/js.cookie.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/uniform/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/moment.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="assets/global/scripts/app.min.js"></script>
+    <script type="text/javascript" src="assets/layouts/layout/scripts/layout.min.js"></script>
+    <script type="text/javascript" src="assets/layouts/layout/scripts/demo.min.js"></script>
+    <script type="text/javascript" src="assets/layouts/global/scripts/quick-sidebar.min.js"></script> -->
+<!--    <script type="text/javascript" src="assets/layouts/global/scripts/fancybox.js"></script>
+    <script type="text/javascript" src="assets/global/scripts/jquery.MultiFile.js"></script>-->
+      
+<?php // $bundle->end(); ?>   
+<?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>">
+<head>
+    <meta charset="<?= Yii::$app->charset ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?= Html::csrfMetaTags() ?>
+    <title><?= Html::encode($this->title) ?></title>   
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+<?php // echo $bundle->renderCss(); ?>
+<script src="<?php echo $baseUrl;?>/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<?php // echo $bundle->renderJs(); ?>
+    <?php $this->head() ?>
+<style>
+    #w0-collapse #w1 li a{
+        font-size: 14px !important; 
+        font-weight: bold;
+        font-family: headerfont;
+        text-transform: uppercase;
+        padding-top: 22px;
+    }
+    .navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-text{
+        color: #fff !important;
+    }
+</style>
+</head>
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+<?php $this->beginBody() ?>
+<?php if($this->context->action->id != 'login')  require_once("_header.php");?>
+
+    <?php
+    NavBar::begin([
+        'brandLabel' => '<img src="'.$imagePath.'/themes/custom/images/Equippp-logo.png" alt="EquiPPP"/>',
+        'brandUrl' => Yii::$app->homeUrl,
+        'options' => [
+            'class' => 'navbar-inverse navbar-fixed-top',
+        ],
+    ]);
+    $menuItems = [
+        ['label' => '
+Home', 'class'=>'nav-txt' ,'url' => ['/site/index']],
+    ];
+    if (Yii::$app->user->isGuest) {
+        $menuItems[] = ['label' => 'Login', 'class'=>'nav-txt', 'url' => ['/site/login']];
+    } else {
+        $menuItems[] = '<li>'
+            . Html::beginForm(['/site/logout'], 'post')
+            . Html::submitButton(
+                'Logout (' . Yii::$app->user->identity->username . ')',
+                ['class' => 'btn btn-link']
+            )
+            . Html::endForm()
+            . '</li>';
+    }
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => $menuItems,
+    ]);
+    NavBar::end();
+    ?>
+    <div class="page-container">
+        <?php if($this->context->action->id != 'login') require_once ('_content.php');?>
+        <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+        <?= Alert::widget() ?>
+        <?= $content ?>
+
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+<!--        </div>-->
+        <!-- END CONTAINER -->
+</div>
+
+
+<footer class="footer">
+    <div class="container">
+        <?php  require_once('_footer.php');?>
+<!--        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+
+        <p class="pull-right"><?= Yii::powered() ?></p>-->
+    </div>
+</footer>
+
+<?php $this->endBody() ?>
+</body>
+</html>
+<?php $this->endPage() ?>

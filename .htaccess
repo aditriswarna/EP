@@ -1,0 +1,47 @@
+#authType Basic
+#AuthName equivas
+#AuthUserFile /etc/apache2/.htpasswd
+#Require valid-user
+#Options +FollowSymLinks
+
+RewriteEngine on
+#home page redirection configuration
+#RewriteCond %{HTTP_HOST} !^$
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteCond %{HTTP_HOST} ^www\.(.*) [NC] 
+
+
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE]
+ 
+#RewriteCond %{HTTP_HOST} ^www\.equippp\.com$ [NC]
+#RewriteRule ^(.*)$ https://www.equippp.com/$1 [L,R=301]
+
+RewriteRule ^backend/web/($|/) - [L]
+
+DirectoryIndex frontend/web/index.php
+
+RewriteRule ^common/(.*)$      common/$1   [QSA,L,NC]
+RewriteRule ^frontend/images/(.*)$      frontend/images/$1   [QSA,L,NC]
+RewriteRule ^(.*)$      frontend/web/index.php/$1   [QSA,L,NC] 
+
+
+#RewriteCond %{HTTP_HOST} ^equippp.com 
+#RewriteRule ^(.*)$ frontend/web/index.php [QSA,L,NC]
+#RewriteCond %{HTTP_HOST} ^www\.equippp\.com
+#RewriteRule ^(.*) frontend/web/index.php [QSA,L,NC]
+
+#RewriteCond %{HTTP_HOST} ^www\.equippp\.com
+#RewriteRule ^(.*)$ frontend/web/index.php/$1 [QSA,L,NC]
+#Redirect ^equippp.com/$ http://equippp.com/frontend/web/index.php/$1 [QSA,L,NC]
+
+#RewriteCond %{HTTP_HOST} ^equippp\.com$
+#RewriteRule ^$ /frontend/web/index.php [L]
+
+#RewriteCond %{HTTP_HOST} ^equippp\.com$
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_URI} !^/frontend/web/index.php
+#RewriteRule ^(.*?)/?$ /frontend/web/index.php/$1/ [L]
+

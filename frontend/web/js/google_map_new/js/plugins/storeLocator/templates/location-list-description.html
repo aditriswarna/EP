@@ -1,0 +1,72 @@
+{{#location}}
+<li data-markerid="{{markerid}}">
+    <div class="list-label" style="display: none;">{{marker}}</div>
+        <div class="project_id" id="project_id_{{project_id}}"style="display:none">{{project_id}}</div>
+	<div class="list-details">
+		<div class="list-content">
+                    {{#if document_name}}
+                    <div class="list-image">
+                         <span class="public-icon">
+                      {{#ifCond project_type_ref_id "1"}}
+                        <i class="fa fa-globe"></i>      
+                      {{else}}
+                    <i class="fa fa-lock"></i>      
+{{/ifCond}}</span>
+                        {{#if media_agency_ref_id}}
+                        <span class ="media-ribbon">
+                         <img class="img-responsive" src="https://s3.ap-south-1.amazonaws.com/equippp-media/uploads/project_images/media.png">    
+                        </span>
+                        {{/if}}
+                     {{#ifCond document_type "projectImage"}}
+                    <img class="img-responsive" src="https://s3.ap-south-1.amazonaws.com/equippp-media/uploads/project_images/{{project_id}}/thumb/{{document_name}}">
+                      {{else}}
+                       <img class="img-responsive" src="https://s3.ap-south-1.amazonaws.com/equippp-media/uploads/project_images/no_project_image.jpg">
+                        {{/ifCond}} 
+                    </div>
+               
+                {{else}}
+   
+                <div class="list-image">
+                    <span class="public-icon"> 
+                  {{#ifCond project_type_ref_id "1"}}
+                         <i class="fa fa-globe"></i>            
+                      {{else}}
+                       <i class="fa fa-lock"></i>      
+{{/ifCond}}</span>
+                    {{#if media_agency_ref_id}}
+                        <span class ="media-ribbon">
+                         <img class="img-responsive" src="https://s3.ap-south-1.amazonaws.com/equippp-media/uploads/project_images/media.png">    
+                        </span>
+                        {{/if}}
+                <img class="img-responsive" src="https://s3.ap-south-1.amazonaws.com/equippp-media/uploads/project_images/no_project_image.jpg">
+                </div>
+                {{/if}}
+                <div class="list-data">
+                <div>
+                <div class="loc-name">{{project_title}}</div>                     
+                     <!--<div class="list-usertype"><span>User Type: </span> {{user_type}}</div>
+                     <div class="list-cattype"><span>Category: </span> {{category_name}}</div>-->
+                     <div class="loc-categ "><span class="tag-imgs"><img class="tg-im" src="https://s3.ap-south-1.amazonaws.com/equippp-media/uploads/project_images/tags-images.png"></span>{{category_name}}</div>
+                     </div>
+                
+			<!--<div class="loc-name">{{project_title}}</div>                     
+            <div class="loc-categ">{{category_name}}</div>-->
+                     
+                     <div class="pledged-amount1 pull-left"><div>Expressions Received :&nbsp;</div><span ><i class="fa fa-inr" aria-hidden="true"></i></span>&nbsp;  {{#if total_participation_amount}} <span class="r_total_amount"> {{total_participation_amount}}  {{else}} 0 {{/if}}</span> /<strong>{{estimated_project_cost }}</strong></div>
+                     <div class="row1">
+                     	<div class="col-50"><span class="time-iconss"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;<span class="left_days">{{#ifTrim left_days}}{{/ifTrim}}</span>&nbsp; {{#ifCondDays left_days "0"}} days passed {{else}} days left {{/ifCondDays}}</span></div>
+                        
+                        <div class="col-30 like-sec"><i class="prjlike fl-let" pid="48" like="0"></i><span class="prjcount1 projectlike-{{project_id}}">{{likes}}</span><span class="likebtn1"></span></div>
+                       
+                        
+                        </div>
+                        
+                     
+                </div>
+			
+		</div>
+	</div>
+</li>
+{{/location}}
+
+

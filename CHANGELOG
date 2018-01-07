@@ -1,0 +1,64 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Release 1.2  (08-MAY-2017)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Fixes:  240 issues fixed.
+
+Enhancements:
+-------------
+•	AWS Integration.
+•	Added search filter for frontend and backend Communique Page.
+•	Display graph on selection of multiple projects.
+•	Contact us form added.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Release 1.1  (06-JUN-2016)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Enhancements: 
+-------------
+•	Filtering the projects list (List by usertype, Initiated Projects, Participated Projects) and added from Date and to Date
+•	Check if profile is set or not while creating project redirect to profile page with flash msg
+•	Moved Dashboard to quick access link (On header top right corner) and removed ‘User Profile’
+•	Added global variable for EquiPPP email address
+•	Removed the code for creating url in email templates and generating the path using global variable
+•	Modified home page with new design.
+•	If a user has already participated in a particular project show an alert message and override the previous participation details with the current details.
+
+Fixes: 
+------
+•	Showing date in d-m-y format instead of time format : Frontend/view/site/mapdata
+•	popup is not showing up in participate project in map page, instead it is redirecting to login page.
+•	create project link is not working. Removed unnecessary code from views/index.php
+•	(projects are not displaying those are not having images)changed query for showing projects are not having images too.in map page
+•	show recent and most viewed project when project status is active only
+•	Email verification was not working properly and forgot password functionality was missing
+•	Added contact us email validation
+•	If a project has no images the system is throwing an error near variable which is getting images. 
+	Displaying the variable only if there are images and date format issue for date of birth while submitting a profile.
+•	While user signup setting the default status modified as per the master table i.e, pending in database.
+•	Error message must hide when validation is fulfilled for estimated amount and invested amount while project submission.
+•	Remove the update and add co-owner button in all projects display list. Display the buttons in the list of projects under "projects initiated by me"
+•	Restrict the start date to current date and end date to +45 days of selected start date in create project form
+•	Fields are not getting cleared when category is changed in project participation form
+
+
+DEPENDENT FILES:
+----------------
+For STAGING:
+	•	XXXXX.Database.STAGING.publish.sql
+
+
+For PRODUCTION:
+	•	XXXXX.Database.PROD.publish.sql
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Release 1.0  (20-MAY-2016)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+•	First Release.
